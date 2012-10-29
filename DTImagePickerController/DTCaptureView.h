@@ -21,7 +21,26 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface DTCaptureView : UIView
+@interface DTCaptureView : UIView {
+	
+@private
+	BOOL _isCameraRunning;
+	
+}
+
+@property (nonatomic) AVCaptureFocusMode focusMode;
+@property (nonatomic) AVCaptureFlashMode flashMode;
+
+@property (nonatomic, readonly)	AVCaptureDevice	 *device;
+@property (nonatomic, retain)	AVCaptureVideoPreviewLayer	*previewLayer;
+@property (nonatomic, retain)	AVCaptureSession *session;
+
+
+
+- (void)startCamera;
+
+- (void)stopCamera;
 
 @end

@@ -24,4 +24,74 @@
 
 @implementation DTCaptureView
 
+- (id)initWithFrame:(CGRect)frame
+{
+	self = [super initWithFrame:frame];
+	if (self) {
+		[self setup];
+	}
+	return self;
+}
+
+- (void)setup
+{
+
+}
+
+#pragma mark - Settings
+- (void)setFocusMode:(AVCaptureFocusMode)focusMode
+{
+	AVCaptureDevice *device = self.device;
+	
+	if ([device isFocusModeSupported:focusMode]) {
+		
+		NSError *error = nil;
+		if ([device lockForConfiguration:&error]){
+			device.focusMode = focusMode;
+			[device unlockForConfiguration];
+			_focusMode = focusMode;
+		} else {
+			DLog(@"Setting focusMode failed: %@", error.localizedDescription);
+		}
+	}
+}
+
+- (void)setFlashMode:(AVCaptureFlashMode)flashMode
+{
+	AVCaptureDevice *device = self.device;
+	
+	if ([device isFlashModeSupported:flashMode]) {
+		
+		NSError *error = nil;
+		if ([device lockForConfiguration:&error]) {
+			device.flashMode = flashMode;
+			[device unlockForConfiguration];
+			_flashMode = flashMode;
+		} else {
+			DLog(@"Setting flashMode failed: %@", error.localizedDescription);
+		}
+	}
+}
+
+- (AVCaptureDevice *)device
+{
+	return [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+}
+
+#pragma mark - Camera session handling
+- (void)startCamera
+{
+	if (_isCameraRunning) return;
+	
+	_previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
+	
+}
+
+- (void)stopCamera
+{
+	
+}
+
+-
+
 @end
