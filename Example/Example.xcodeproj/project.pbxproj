@@ -18,6 +18,7 @@
 		1D02AFB3163F2FAE00F1FB7D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB2163F2FAE00F1FB7D /* Default-568h@2x.png */; };
 		1D02AFB6163F2FAE00F1FB7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D02AFB5163F2FAE00F1FB7D /* ViewController.m */; };
 		1D02AFB9163F2FAE00F1FB7D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB7163F2FAE00F1FB7D /* ViewController.xib */; };
+		1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0C61F163F36F800EF519A /* DTCaptureView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		1D02AFB4163F2FAE00F1FB7D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1D02AFB5163F2FAE00F1FB7D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1D02AFB8163F2FAE00F1FB7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		1DD0C61E163F36F800EF519A /* DTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCaptureView.h; sourceTree = "<group>"; };
+		1DD0C61F163F36F800EF519A /* DTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCaptureView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				1D02AFA2163F2FAE00F1FB7D /* Example */,
+				1DD0C61C163F36E200EF519A /* DTImagePickerController */,
 				1D02AF9B163F2FAE00F1FB7D /* Frameworks */,
 				1D02AF99163F2FAE00F1FB7D /* Products */,
 			);
@@ -105,6 +109,16 @@
 				1D02AFB2163F2FAE00F1FB7D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1DD0C61C163F36E200EF519A /* DTImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				1DD0C61E163F36F800EF519A /* DTCaptureView.h */,
+				1DD0C61F163F36F800EF519A /* DTCaptureView.m */,
+			);
+			name = DTImagePickerController;
+			path = ../DTImagePickerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +190,7 @@
 				1D02AFA9163F2FAE00F1FB7D /* main.m in Sources */,
 				1D02AFAD163F2FAE00F1FB7D /* AppDelegate.m in Sources */,
 				1D02AFB6163F2FAE00F1FB7D /* ViewController.m in Sources */,
+				1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +307,7 @@
 				1D02AFBE163F2FAE00F1FB7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
