@@ -23,12 +23,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface DTCaptureView : UIView {
-	
-@private
-	BOOL _isCameraRunning;
-	AVCaptureDeviceInput *_currentInput;
-}
+@interface DTCaptureView : UIView
 
 @property (nonatomic) AVCaptureFocusMode focusMode;
 @property (nonatomic) AVCaptureFlashMode flashMode;

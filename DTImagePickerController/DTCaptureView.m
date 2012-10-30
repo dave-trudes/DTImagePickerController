@@ -23,7 +23,12 @@
 #import "DTCaptureView.h"
 #import "DTCaptureViewUtils.h"
 
-@implementation DTCaptureView
+@implementation DTCaptureView {
+	
+	BOOL _isCameraRunning;
+	AVCaptureDeviceInput *_currentInput;
+}
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -36,26 +41,27 @@
 
 - (void)setup
 {
-	//Settting defaults
+	//Setting defaults
 	self.focusMode = AVCaptureFocusModeAutoFocus;
 	self.flashMode = AVCaptureFlashModeAuto;
 	self.devicePosition = AVCaptureDevicePositionFront;
+	
+	//Create input device
+	_currentInput = [DTCaptureViewUtils deviceInputWithPosition:_devicePosition];
 }
 
 #pragma mark - Settings
 - (void)setFocusMode:(AVCaptureFocusMode)focusMode
-{
-	_focusMode = focusMode;
-	if (!_session) return;
-	
+{	
 	AVCaptureDevice *device = self.device;
 	
 	if ([device isFocusModeSupported:focusMode]) {
-		
 		NSError *error = nil;
+		
 		if ([device lockForConfiguration:&error]){
 			device.focusMode = focusMode;
 			[device unlockForConfiguration];
+			_focusMode = focusMode;
 		} else {
 			DLog(@"Setting focusMode failed: %@", error.localizedDescription);
 		}
@@ -64,17 +70,15 @@
 
 - (void)setFlashMode:(AVCaptureFlashMode)flashMode
 {
-	_flashMode = flashMode;
-	if (!_session) return;
-	
 	AVCaptureDevice *device = self.device;
 	
 	if ([device isFlashModeSupported:flashMode]) {
-		
 		NSError *error = nil;
+		
 		if ([device lockForConfiguration:&error]) {
 			device.flashMode = flashMode;
 			[device unlockForConfiguration];
+			_flashMode = flashMode;
 		} else {
 			DLog(@"Setting flashMode failed: %@", error.localizedDescription);
 		}
@@ -83,16 +87,14 @@
 
 - (void)setWhiteBalanceMode:(AVCaptureWhiteBalanceMode)whiteBalanceMode
 {
-	_whiteBalanceMode = whiteBalanceMode;
-	if (!_session) return;
-	
 	AVCaptureDevice *device = self.device;
-	if ([device isWhiteBalanceModeSupported:whiteBalanceMode])
-	{
+	if ([device isWhiteBalanceModeSupported:whiteBalanceMode]) {
 		NSError *error = nil;
+		
 		if ([device lockForConfiguration:&error]) {
 			device.whiteBalanceMode = whiteBalanceMode;
 			[device unlockForConfiguration];
+			_whiteBalanceMode = whiteBalanceMode;
 		} else {
 			DLog(@"Setting whiteBalanceMode failed: %@", error.localizedDescription);
 		}
@@ -130,7 +132,7 @@
 #pragma mark - Getter 
 - (AVCaptureDevice *)device
 {
-	return [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	return _currentInput.device;
 }
 
 - (AVCaptureConnection *)connection
@@ -153,14 +155,21 @@
 	_previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 	[self.layer addSublayer:_previewLayer];
 	
-	_isCameraRunning = true;
+	_isCameraRunning = NO;
 }
 
 - (void)stopCamera
 {
 	if (!_isCameraRunning) return;
+	
 	[_session stopRunning];
 	[_previewLayer removeFromSuperlayer];
+	
+	_session = nil;
+	_previewLayer = nil;
+	_stillImageOutput = nil;
+	
+	_isCameraRunning = NO;
 }
 
 - (void)swapCameraPosition
@@ -171,44 +180,17 @@
 #pragma mark - Capture session methods
 - (void)setupCaptureSession
 {
-	//Create session
+	//Create session & add input
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
-	
-	//Create input device
-	AVCaptureDeviceInput *input = [DTCaptureViewUtils deviceInputWithPosition:_devicePosition];
-	
-	if (input) {
-		[session addInput:input];
-		_currentInput = input;
-	} 
+	[session addInput:_currentInput];
 	
 	//Create & configure output -> StillImage
 	AVCaptureStillImageOutput *output = [[AVCaptureStillImageOutput alloc] init];
 	output.outputSettings = @{AVVideoCodecKey:AVVideoCodecJPEG};
 	[session addOutput:output];
 	
-	
 	//Start session
 	[session startRunning];
-	
-	//Setup settings
-	AVCaptureDevice *device = self.device;
-	if ([device lockForConfiguration:nil]) {
-		
-		if ([device isFlashModeSupported:_flashMode]) {
-			device.flashMode = _flashMode;
-		}
-		
-		if ([device isFocusModeSupported:_focusMode]) {
-			device.focusMode = _focusMode;
-		}
-		
-		if ([device isWhiteBalanceModeSupported:_whiteBalanceMode]) {
-			device.whiteBalanceMode = _whiteBalanceMode;
-		}
-		
-		[device unlockForConfiguration];
-	}
 	
 	_session = session;
 	_stillImageOutput = output;
