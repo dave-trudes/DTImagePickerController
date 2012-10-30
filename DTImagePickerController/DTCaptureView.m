@@ -48,7 +48,6 @@
 	_focusMode = focusMode;
 	if (!_session) return;
 	
-	
 	AVCaptureDevice *device = self.device;
 	
 	if ([device isFocusModeSupported:focusMode]) {
