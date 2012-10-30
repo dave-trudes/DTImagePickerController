@@ -31,12 +31,12 @@
 @property (nonatomic) AVCaptureVideoOrientation orientation;
 @property (nonatomic) AVCaptureDevicePosition devicePosition;
 
-@property (nonatomic, readonly)	AVCaptureDevice	 *device;
+@property (nonatomic, readonly)	AVCaptureDevice	*device;
 @property (nonatomic, readonly) AVCaptureConnection *connection;
 
-@property (nonatomic, retain)	AVCaptureVideoPreviewLayer	*previewLayer;
-@property (nonatomic, retain)	AVCaptureSession *session;
-@property (nonatomic, retain)	AVCaptureStillImageOutput *stillImageOutput;
+@property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic, retain) AVCaptureSession *session;
+@property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
 
 - (void)startCamera;
