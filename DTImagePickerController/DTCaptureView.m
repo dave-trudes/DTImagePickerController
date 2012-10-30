@@ -44,7 +44,7 @@
 	//Setting defaults
 	self.focusMode = AVCaptureFocusModeAutoFocus;
 	self.flashMode = AVCaptureFlashModeAuto;
-	self.devicePosition = AVCaptureDevicePositionFront;
+	self.devicePosition = AVCaptureDevicePositionBack;
 	
 	//Create input device
 	_currentInput = [DTCaptureViewUtils deviceInputWithPosition:_devicePosition];
