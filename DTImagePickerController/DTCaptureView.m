@@ -29,7 +29,7 @@
 	AVCaptureDeviceInput *_currentInput;
 }
 
-
+#pragma mark - Initialization
 - (id)initWithFrame:(CGRect)frame
 {
 	self = [super initWithFrame:frame];
