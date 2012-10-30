@@ -20,6 +20,7 @@
 		1D02AFB9163F2FAE00F1FB7D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB7163F2FAE00F1FB7D /* ViewController.xib */; };
 		1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0C61F163F36F800EF519A /* DTCaptureView.m */; };
 		1DE3408216406D8200872397 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE3408116406D8200872397 /* AVFoundation.framework */; };
+		1DE3408D16407C8000872397 /* DTCaptureViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3408C16407C8000872397 /* DTCaptureViewUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		1DD0C61F163F36F800EF519A /* DTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCaptureView.m; sourceTree = "<group>"; };
 		1DE3407B16406CDC00872397 /* DTCaptureViewDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTCaptureViewDefines.h; sourceTree = "<group>"; };
 		1DE3408116406D8200872397 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1DE3408B16407C8000872397 /* DTCaptureViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCaptureViewUtils.h; sourceTree = "<group>"; };
+		1DE3408C16407C8000872397 /* DTCaptureViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCaptureViewUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				1DE3407B16406CDC00872397 /* DTCaptureViewDefines.h */,
 				1DD0C61E163F36F800EF519A /* DTCaptureView.h */,
 				1DD0C61F163F36F800EF519A /* DTCaptureView.m */,
+				1DE3408B16407C8000872397 /* DTCaptureViewUtils.h */,
+				1DE3408C16407C8000872397 /* DTCaptureViewUtils.m */,
 			);
 			name = DTImagePickerController;
 			path = ../DTImagePickerController;
@@ -197,6 +202,7 @@
 				1D02AFAD163F2FAE00F1FB7D /* AppDelegate.m in Sources */,
 				1D02AFB6163F2FAE00F1FB7D /* ViewController.m in Sources */,
 				1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */,
+				1DE3408D16407C8000872397 /* DTCaptureViewUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

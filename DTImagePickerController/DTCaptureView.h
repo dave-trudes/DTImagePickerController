@@ -27,20 +27,26 @@
 	
 @private
 	BOOL _isCameraRunning;
-	
+	AVCaptureDeviceInput *_currentInput;
 }
 
 @property (nonatomic) AVCaptureFocusMode focusMode;
 @property (nonatomic) AVCaptureFlashMode flashMode;
+@property (nonatomic) AVCaptureWhiteBalanceMode whiteBalanceMode;
+@property (nonatomic) AVCaptureVideoOrientation orientation;
+@property (nonatomic) AVCaptureDevicePosition devicePosition;
 
 @property (nonatomic, readonly)	AVCaptureDevice	 *device;
+@property (nonatomic, readonly) AVCaptureConnection *connection;
+
 @property (nonatomic, retain)	AVCaptureVideoPreviewLayer	*previewLayer;
 @property (nonatomic, retain)	AVCaptureSession *session;
-
+@property (nonatomic, retain)	AVCaptureStillImageOutput *stillImageOutput;
 
 
 - (void)startCamera;
 
 - (void)stopCamera;
 
+- (void)swapCameraPosition;
 @end
