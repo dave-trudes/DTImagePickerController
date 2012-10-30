@@ -19,6 +19,7 @@
 		1D02AFB6163F2FAE00F1FB7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D02AFB5163F2FAE00F1FB7D /* ViewController.m */; };
 		1D02AFB9163F2FAE00F1FB7D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB7163F2FAE00F1FB7D /* ViewController.xib */; };
 		1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0C61F163F36F800EF519A /* DTCaptureView.m */; };
+		1DE3408216406D8200872397 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE3408116406D8200872397 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		1D02AFB8163F2FAE00F1FB7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		1DD0C61E163F36F800EF519A /* DTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCaptureView.h; sourceTree = "<group>"; };
 		1DD0C61F163F36F800EF519A /* DTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCaptureView.m; sourceTree = "<group>"; };
+		1DE3407B16406CDC00872397 /* DTCaptureViewDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTCaptureViewDefines.h; sourceTree = "<group>"; };
+		1DE3408116406D8200872397 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DE3408216406D8200872397 /* AVFoundation.framework in Frameworks */,
 				1D02AF9D163F2FAE00F1FB7D /* UIKit.framework in Frameworks */,
 				1D02AF9F163F2FAE00F1FB7D /* Foundation.framework in Frameworks */,
 				1D02AFA1163F2FAE00F1FB7D /* CoreGraphics.framework in Frameworks */,
@@ -77,6 +81,7 @@
 		1D02AF9B163F2FAE00F1FB7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1DE3408116406D8200872397 /* AVFoundation.framework */,
 				1D02AF9C163F2FAE00F1FB7D /* UIKit.framework */,
 				1D02AF9E163F2FAE00F1FB7D /* Foundation.framework */,
 				1D02AFA0163F2FAE00F1FB7D /* CoreGraphics.framework */,
@@ -114,6 +119,7 @@
 		1DD0C61C163F36E200EF519A /* DTImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
+				1DE3407B16406CDC00872397 /* DTCaptureViewDefines.h */,
 				1DD0C61E163F36F800EF519A /* DTCaptureView.h */,
 				1DD0C61F163F36F800EF519A /* DTCaptureView.m */,
 			);
