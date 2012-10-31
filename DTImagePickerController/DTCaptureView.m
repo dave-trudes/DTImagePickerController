@@ -27,7 +27,7 @@
 
 @implementation DTCaptureView {
 	
-	BOOL _isCameraRunning;
+	BOOL _isCameraRunning, _isCapturing;
 	AVCaptureDeviceInput *_currentInput;
 }
 
@@ -191,7 +191,7 @@
 
 - (void)captureImage
 {
-	if (!_session) return;
+	if (!_session || _isCapturing) return;
 	
 	AVCaptureConnection *conn = self.connection;
 	
@@ -200,6 +200,7 @@
 	//DLog("device orientation: %@", NSStringFromUIImageOrientation([UIApplication sharedApplication].statusBarOrientation));
 	
 	//Capture image
+	_isCapturing = YES;
 	[_stillImageOutput captureStillImageAsynchronouslyFromConnection:conn
 												   completionHandler:^(CMSampleBufferRef imageBuffer, NSError *error)
 	{
@@ -208,6 +209,8 @@
 			NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageBuffer];
 			UIImage *image = [[UIImage alloc] initWithData:imageData];
 		
+			_isCapturing = NO;
+			
 			if (![self.delegate respondsToSelector:@selector(captureViewDidFinishCaptureImageWithInfo:)])
 				return;
 			
@@ -217,7 +220,10 @@
 				UIImagePickerControllerOriginalImage : image
 			};
 			[self.delegate captureViewDidFinishCaptureImageWithInfo:imageInfo];
+			
 		} else if (error) {
+			
+			_isCapturing = NO;
 			DLog(@"capturing image failed: %@", error.localizedDescription);
 			if ([self.delegate respondsToSelector:@selector(captureViewDidFailCaptureImageWithError:)])
 				[self.delegate captureViewDidFailCaptureImageWithError:error];
