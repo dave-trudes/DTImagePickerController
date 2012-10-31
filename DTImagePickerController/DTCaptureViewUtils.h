@@ -32,3 +32,6 @@
 
 
 @end
+
+#pragma mark - Functions
+NSString* NSStringFromUIImageOrientation(UIImageOrientation orientation);
