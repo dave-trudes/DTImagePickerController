@@ -18,6 +18,7 @@
 		1D02AFB3163F2FAE00F1FB7D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB2163F2FAE00F1FB7D /* Default-568h@2x.png */; };
 		1D02AFB6163F2FAE00F1FB7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D02AFB5163F2FAE00F1FB7D /* ViewController.m */; };
 		1D02AFB9163F2FAE00F1FB7D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB7163F2FAE00F1FB7D /* ViewController.xib */; };
+		1D96DB2316411C0E00881E17 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D96DB2116411C0100881E17 /* MobileCoreServices.framework */; };
 		1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0C61F163F36F800EF519A /* DTCaptureView.m */; };
 		1DE3408216406D8200872397 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE3408116406D8200872397 /* AVFoundation.framework */; };
 		1DE3408D16407C8000872397 /* DTCaptureViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE3408C16407C8000872397 /* DTCaptureViewUtils.m */; };
@@ -40,6 +41,7 @@
 		1D02AFB4163F2FAE00F1FB7D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1D02AFB5163F2FAE00F1FB7D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1D02AFB8163F2FAE00F1FB7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		1D96DB2116411C0100881E17 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1DD0C61E163F36F800EF519A /* DTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCaptureView.h; sourceTree = "<group>"; };
 		1DD0C61F163F36F800EF519A /* DTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCaptureView.m; sourceTree = "<group>"; };
 		1DE3407B16406CDC00872397 /* DTCaptureViewDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTCaptureViewDefines.h; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				1D02AF9D163F2FAE00F1FB7D /* UIKit.framework in Frameworks */,
 				1D02AF9F163F2FAE00F1FB7D /* Foundation.framework in Frameworks */,
 				1D02AFA1163F2FAE00F1FB7D /* CoreGraphics.framework in Frameworks */,
+				1D96DB2316411C0E00881E17 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +87,7 @@
 		1D02AF9B163F2FAE00F1FB7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D96DB2116411C0100881E17 /* MobileCoreServices.framework */,
 				1DE3408116406D8200872397 /* AVFoundation.framework */,
 				1D02AF9C163F2FAE00F1FB7D /* UIKit.framework */,
 				1D02AF9E163F2FAE00F1FB7D /* Foundation.framework */,
