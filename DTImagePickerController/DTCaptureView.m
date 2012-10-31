@@ -196,21 +196,32 @@
 	AVCaptureConnection *conn = self.connection;
 	
 	//set orientation
-	self.orientation = [UIDevice currentDevice].orientation;
+	//self.orientation = [UIApplication sharedApplication].statusBarOrientation;
+	//DLog("device orientation: %@", NSStringFromUIImageOrientation([UIApplication sharedApplication].statusBarOrientation));
 	
 	//Capture image
 	[_stillImageOutput captureStillImageAsynchronouslyFromConnection:conn
 												   completionHandler:^(CMSampleBufferRef imageBuffer, NSError *error)
 	{
-		NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageBuffer];
-		UIImage *image = [[UIImage alloc] initWithData:imageData];
+		if (false) {
 		
-		//Sending info dictionary to delegate
-		NSDictionary *imageInfo = @{
-			UIImagePickerControllerMediaType : (NSString *)kUTTypeImage,
-			UIImagePickerControllerOriginalImage : image
-		};
-		[self.delegate captureViewDidFinishCaptureImage:imageInfo];
+			NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageBuffer];
+			UIImage *image = [[UIImage alloc] initWithData:imageData];
+		
+			if (![self.delegate respondsToSelector:@selector(captureViewDidFinishCaptureImageWithInfo:)])
+				return;
+			
+			//Sending info dictionary to delegate
+			NSDictionary *imageInfo = @{
+				UIImagePickerControllerMediaType : (NSString *)kUTTypeImage,
+				UIImagePickerControllerOriginalImage : image
+			};
+			[self.delegate captureViewDidFinishCaptureImageWithInfo:imageInfo];
+		} else {
+			DLog(@"capturing image failed: %@", error.localizedDescription);
+			if ([self.delegate respondsToSelector:@selector(captureViewDidFailCaptureImageWithError:)])
+				[self.delegate captureViewDidFailCaptureImageWithError:error];
+		}
 	}];
 }
 

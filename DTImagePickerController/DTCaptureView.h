@@ -27,8 +27,8 @@
 @protocol DTCaptureViewDelegate <NSObject>
 
 @optional
-- (void)captureViewDidFinishCaptureImage:(NSDictionary *)mediaInfo;
-
+- (void)captureViewDidFinishCaptureImageWithInfo:(NSDictionary *)mediaInfo;
+- (void)captureViewDidFailCaptureImageWithError:(NSError *)error;
 @end
 #pragma mark -
 
