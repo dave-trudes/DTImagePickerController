@@ -23,6 +23,16 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+#pragma mark - DTCaptureViewDelegate protocol
+@protocol DTCaptureViewDelegate <NSObject>
+
+@optional
+- (void)captureViewDidFinishCaptureImage:(NSDictionary *)mediaInfo;
+
+@end
+#pragma mark -
+
+
 @interface DTCaptureView : UIView
 
 @property (nonatomic) AVCaptureFocusMode focusMode;
@@ -38,10 +48,13 @@
 @property (nonatomic, retain) AVCaptureSession *session;
 @property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
+@property (nonatomic, assign) id<DTCaptureViewDelegate> delegate;
 
 - (void)startCamera;
 
 - (void)stopCamera;
 
 - (void)swapCameraPosition;
+
+- (void)captureImage;
 @end

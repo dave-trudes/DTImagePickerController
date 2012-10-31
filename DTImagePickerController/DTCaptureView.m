@@ -21,13 +21,16 @@
 // THE SOFTWARE.
 
 #import "DTCaptureView.h"
+#import <MobileCoreServices/MobileCoreServices.h> 
 #import "DTCaptureViewUtils.h"
+
 
 @implementation DTCaptureView {
 	
 	BOOL _isCameraRunning;
 	AVCaptureDeviceInput *_currentInput;
 }
+
 
 #pragma mark - Initialization
 - (id)initWithFrame:(CGRect)frame
@@ -177,6 +180,31 @@
 	self.devicePosition = (_devicePosition == AVCaptureDevicePositionFront) ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
 }
 
+- (void)captureImage
+{
+	if (!_session) return;
+	
+	AVCaptureConnection *conn = self.connection;
+	
+	//set orientation
+	self.orientation = [UIDevice currentDevice].orientation;
+	
+	//Capture image
+	[_stillImageOutput captureStillImageAsynchronouslyFromConnection:conn
+												   completionHandler:^(CMSampleBufferRef imageBuffer, NSError *error)
+	{
+		NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageBuffer];
+		UIImage *image = [[UIImage alloc] initWithData:imageData];
+		
+		//Sending info dictionary to delegate
+		NSDictionary *imageInfo = @{
+			UIImagePickerControllerMediaType : (NSString *)kUTTypeImage,
+			UIImagePickerControllerOriginalImage : image
+		};
+		[self.delegate captureViewDidFinishCaptureImage:imageInfo];
+	}];
+}
+
 #pragma mark - Capture session methods
 - (void)setupCaptureSession
 {
@@ -186,7 +214,7 @@
 	
 	//Create & configure output -> StillImage
 	AVCaptureStillImageOutput *output = [[AVCaptureStillImageOutput alloc] init];
-	output.outputSettings = @{AVVideoCodecKey:AVVideoCodecJPEG};
+	output.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
 	[session addOutput:output];
 	
 	//Start session
