@@ -203,7 +203,7 @@
 	[_stillImageOutput captureStillImageAsynchronouslyFromConnection:conn
 												   completionHandler:^(CMSampleBufferRef imageBuffer, NSError *error)
 	{
-		if (false) {
+		if (imageBuffer != NULL) {
 		
 			NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageBuffer];
 			UIImage *image = [[UIImage alloc] initWithData:imageData];
@@ -217,7 +217,7 @@
 				UIImagePickerControllerOriginalImage : image
 			};
 			[self.delegate captureViewDidFinishCaptureImageWithInfo:imageInfo];
-		} else {
+		} else if (error) {
 			DLog(@"capturing image failed: %@", error.localizedDescription);
 			if ([self.delegate respondsToSelector:@selector(captureViewDidFailCaptureImageWithError:)])
 				[self.delegate captureViewDidFailCaptureImageWithError:error];
