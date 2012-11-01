@@ -50,8 +50,9 @@
 
 @property (nonatomic, assign) id<DTCaptureViewDelegate> delegate;
 
+//Starts camera with 'AVCaptureSessionPresetPhoto'
 - (void)startCamera;
-
+- (void)startCameraWithPreset:(NSString *)preset;
 - (void)stopCamera;
 
 - (void)swapCameraPosition;

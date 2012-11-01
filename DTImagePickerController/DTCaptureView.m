@@ -157,10 +157,15 @@
 #pragma mark - Public methods
 - (void)startCamera
 {
+	[self startCameraWithPreset:AVCaptureSessionPresetPhoto];
+}
+
+- (void)startCameraWithPreset:(NSString *)preset
+{
 	if (_isCameraRunning) return;
 	
 	//Setup capture session
-	[self setupCaptureSession];
+	[self setupCaptureSessionWithPreset:preset];
 	
 	//Preview layer
 	_previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
@@ -233,10 +238,12 @@
 }
 
 #pragma mark - Capture session methods
-- (void)setupCaptureSession
+- (void)setupCaptureSessionWithPreset:(NSString *)preset
 {
 	//Create session & add input
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
+	session.sessionPreset = preset;
+	
 	[session addInput:_currentInput];
 	
 	//Create & configure output -> StillImage
