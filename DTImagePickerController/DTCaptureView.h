@@ -27,7 +27,11 @@
 @protocol DTCaptureViewDelegate <NSObject>
 
 @optional
+//Will be called when image capturing finishes. Dictionary mediaInfo mimics
+//the dictionary passed to UIImagePickerControllerDelegate
 - (void)captureViewDidFinishCaptureImageWithInfo:(NSDictionary *)mediaInfo;
+
+//Called if an error appears during image capturing
 - (void)captureViewDidFailCaptureImageWithError:(NSError *)error;
 @end
 #pragma mark -
@@ -35,6 +39,7 @@
 
 @interface DTCaptureView : UIView
 
+//AV* related settings accessors
 @property (nonatomic) AVCaptureFocusMode focusMode;
 @property (nonatomic) AVCaptureFlashMode flashMode;
 @property (nonatomic) AVCaptureWhiteBalanceMode whiteBalanceMode;
@@ -50,12 +55,15 @@
 
 @property (nonatomic, assign) id<DTCaptureViewDelegate> delegate;
 
-//Starts camera with 'AVCaptureSessionPresetPhoto'
+//Starts camera session with 'AVCaptureSessionPresetPhoto'
 - (void)startCamera;
 - (void)startCameraWithPreset:(NSString *)preset;
 - (void)stopCamera;
 
+//Swap the camera position if supported by device (Rear camera / Front camera)
 - (void)swapCameraPosition;
 
+//Captures the image and notifies the delegate
 - (void)captureImage;
+
 @end

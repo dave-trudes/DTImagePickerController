@@ -226,7 +226,6 @@
 			[self.delegate captureViewDidFinishCaptureImageWithInfo:imageInfo];
 			
 		} else if (error) {
-			
 			_isCapturing = NO;
 			DLog(@"capturing image failed: %@", error.localizedDescription);
 			if ([self.delegate respondsToSelector:@selector(captureViewDidFailCaptureImageWithError:)])
