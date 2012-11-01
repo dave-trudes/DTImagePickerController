@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTImagePickerController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <DTImagePickerControllerDelegate>
+
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+
+- (IBAction)openImagePicker:(id)sender;
 
 @end

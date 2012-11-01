@@ -8,22 +8,46 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
+
+- (void)openImagePicker:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	self.imageView.image = nil;
+	DTImagePickerController *picker = [[DTImagePickerController alloc] init];
+	picker.showFullscreen = YES;
+	picker.delegate = self;
+	[self presentViewController:picker animated:YES completion:nil];
+	//[self presentModalViewController:_picker animated:YES];
 }
+
+#pragma mark - DTImagePickerControllerDelegate methods
+- (void)imagePickerController:(DTImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	DLog(@"imageinfo: %@", info);
+	[self dismissViewControllerAnimated:YES completion:nil];
+	UIImage *img = info[UIImagePickerControllerOriginalImage];
+	self.imageView.image = img;
+	DLog(@"img: %@", NSStringFromCGSize(img.size));
+}
+
+- (void)imagePickerControllerDidCancel:(DTImagePickerController *)picker
+{
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

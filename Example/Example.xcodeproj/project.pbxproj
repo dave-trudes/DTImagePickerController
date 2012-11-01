@@ -18,6 +18,10 @@
 		1D02AFB3163F2FAE00F1FB7D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB2163F2FAE00F1FB7D /* Default-568h@2x.png */; };
 		1D02AFB6163F2FAE00F1FB7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D02AFB5163F2FAE00F1FB7D /* ViewController.m */; };
 		1D02AFB9163F2FAE00F1FB7D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D02AFB7163F2FAE00F1FB7D /* ViewController.xib */; };
+		1D611D4416428652003BEFD7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D611D4316428652003BEFD7 /* QuartzCore.framework */; };
+		1D611DF21642BC99003BEFD7 /* DTImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D611DF11642BC99003BEFD7 /* DTImagePickerController.m */; };
+		1D611DF51642BCED003BEFD7 /* DTImagePickerControlBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D611DF41642BCED003BEFD7 /* DTImagePickerControlBar.m */; };
+		1D611DFB1642ED84003BEFD7 /* DTImagePickerControlBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D611DFA1642ED84003BEFD7 /* DTImagePickerControlBar.xib */; };
 		1D96DB2316411C0E00881E17 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D96DB2116411C0100881E17 /* MobileCoreServices.framework */; };
 		1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0C61F163F36F800EF519A /* DTCaptureView.m */; };
 		1DE3408216406D8200872397 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DE3408116406D8200872397 /* AVFoundation.framework */; };
@@ -41,6 +45,12 @@
 		1D02AFB4163F2FAE00F1FB7D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1D02AFB5163F2FAE00F1FB7D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1D02AFB8163F2FAE00F1FB7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		1D611D4316428652003BEFD7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1D611DF01642BC99003BEFD7 /* DTImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTImagePickerController.h; sourceTree = "<group>"; };
+		1D611DF11642BC99003BEFD7 /* DTImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTImagePickerController.m; sourceTree = "<group>"; };
+		1D611DF31642BCED003BEFD7 /* DTImagePickerControlBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTImagePickerControlBar.h; sourceTree = "<group>"; };
+		1D611DF41642BCED003BEFD7 /* DTImagePickerControlBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTImagePickerControlBar.m; sourceTree = "<group>"; };
+		1D611DFA1642ED84003BEFD7 /* DTImagePickerControlBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DTImagePickerControlBar.xib; sourceTree = "<group>"; };
 		1D96DB2116411C0100881E17 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1DD0C61E163F36F800EF519A /* DTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCaptureView.h; sourceTree = "<group>"; };
 		1DD0C61F163F36F800EF519A /* DTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCaptureView.m; sourceTree = "<group>"; };
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D611D4416428652003BEFD7 /* QuartzCore.framework in Frameworks */,
 				1DE3408216406D8200872397 /* AVFoundation.framework in Frameworks */,
 				1D02AF9D163F2FAE00F1FB7D /* UIKit.framework in Frameworks */,
 				1D02AF9F163F2FAE00F1FB7D /* Foundation.framework in Frameworks */,
@@ -87,6 +98,7 @@
 		1D02AF9B163F2FAE00F1FB7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D611D4316428652003BEFD7 /* QuartzCore.framework */,
 				1D96DB2116411C0100881E17 /* MobileCoreServices.framework */,
 				1DE3408116406D8200872397 /* AVFoundation.framework */,
 				1D02AF9C163F2FAE00F1FB7D /* UIKit.framework */,
@@ -131,6 +143,11 @@
 				1DD0C61F163F36F800EF519A /* DTCaptureView.m */,
 				1DE3408B16407C8000872397 /* DTCaptureViewUtils.h */,
 				1DE3408C16407C8000872397 /* DTCaptureViewUtils.m */,
+				1D611DF01642BC99003BEFD7 /* DTImagePickerController.h */,
+				1D611DF11642BC99003BEFD7 /* DTImagePickerController.m */,
+				1D611DF31642BCED003BEFD7 /* DTImagePickerControlBar.h */,
+				1D611DF41642BCED003BEFD7 /* DTImagePickerControlBar.m */,
+				1D611DFA1642ED84003BEFD7 /* DTImagePickerControlBar.xib */,
 			);
 			name = DTImagePickerController;
 			path = ../DTImagePickerController;
@@ -192,6 +209,7 @@
 				1D02AFB1163F2FAE00F1FB7D /* Default@2x.png in Resources */,
 				1D02AFB3163F2FAE00F1FB7D /* Default-568h@2x.png in Resources */,
 				1D02AFB9163F2FAE00F1FB7D /* ViewController.xib in Resources */,
+				1D611DFB1642ED84003BEFD7 /* DTImagePickerControlBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +225,8 @@
 				1D02AFB6163F2FAE00F1FB7D /* ViewController.m in Sources */,
 				1DD0C620163F36F800EF519A /* DTCaptureView.m in Sources */,
 				1DE3408D16407C8000872397 /* DTCaptureViewUtils.m in Sources */,
+				1D611DF21642BC99003BEFD7 /* DTImagePickerController.m in Sources */,
+				1D611DF51642BCED003BEFD7 /* DTImagePickerControlBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +305,7 @@
 		1D02AFBD163F2FAE00F1FB7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
@@ -296,6 +317,7 @@
 		1D02AFBE163F2FAE00F1FB7D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";

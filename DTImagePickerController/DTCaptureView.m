@@ -58,9 +58,6 @@
 	self.focusMode = AVCaptureFocusModeAutoFocus;
 	self.flashMode = AVCaptureFlashModeAuto;
 	self.devicePosition = AVCaptureDevicePositionBack;
-	
-	//Create input device
-	_currentInput = [DTCaptureViewUtils deviceInputWithPosition:_devicePosition];
 }
 
 #pragma mark - Settings
@@ -170,22 +167,23 @@
 	//Preview layer
 	_previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
 	_previewLayer.frame = self.bounds;
-	_previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.layer addSublayer:_previewLayer];
 	
-	_isCameraRunning = NO;
+	_previewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+	[self.layer addSublayer:_previewLayer];
+
 }
 
 - (void)stopCamera
 {
 	if (!_isCameraRunning) return;
-	
+
 	[_session stopRunning];
 	[_previewLayer removeFromSuperlayer];
 	
 	_session = nil;
 	_previewLayer = nil;
 	_stillImageOutput = nil;
+	_currentInput = nil;
 	
 	_isCameraRunning = NO;
 }
@@ -244,6 +242,8 @@
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
 	session.sessionPreset = preset;
 	
+	//Create input device
+	_currentInput = [DTCaptureViewUtils deviceInputWithPosition:_devicePosition];
 	[session addInput:_currentInput];
 	
 	//Create & configure output -> StillImage
@@ -256,6 +256,8 @@
 	
 	_session = session;
 	_stillImageOutput = output;
+	
+	_isCameraRunning = YES;
 }
 
 
