@@ -47,12 +47,16 @@
 @property (nonatomic) AVCaptureVideoOrientation orientation;
 @property (nonatomic) AVCaptureDevicePosition devicePosition;
 
+//AV* related objects
 @property (nonatomic, readonly)	AVCaptureDevice	*device;
 @property (nonatomic, readonly) AVCaptureConnection *connection;
-
-@property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, retain) AVCaptureSession *session;
 @property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
+
+//The video will be displayed in previewLayer according to 'AVLayerVideoGravityResizeAspectFill'.
+//Default preview layer frame will match the bounds of the DTCaptureView
+@property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic) CGRect previewLayerFrame;
 
 
 @property (nonatomic, assign) id<DTCaptureViewDelegate> delegate;

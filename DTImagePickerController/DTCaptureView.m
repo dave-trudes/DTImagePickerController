@@ -58,6 +58,7 @@
 	self.focusMode = AVCaptureFocusModeAutoFocus;
 	self.flashMode = AVCaptureFlashModeAuto;
 	self.devicePosition = AVCaptureDevicePositionBack;
+	self.previewLayerFrame = self.bounds;
 }
 
 
@@ -139,6 +140,14 @@
 	_currentInput = newInput;
 }
 
+- (void)setPreviewLayerFrame:(CGRect)previewLayerFrame
+{
+	if (_previewLayer) {
+		_previewLayer.frame = previewLayerFrame;
+	}
+	_previewLayerFrame = previewLayerFrame;
+}
+
 
 #pragma mark - Getter 
 - (AVCaptureDevice *)device
@@ -168,9 +177,9 @@
 	
 	//Preview layer
 	_previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
-	_previewLayer.frame = self.bounds;
+	_previewLayer.frame = _previewLayerFrame;
 	
-	_previewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+	_previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 	[self.layer addSublayer:_previewLayer];
 
 }
