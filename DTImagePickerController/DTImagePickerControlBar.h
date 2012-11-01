@@ -24,6 +24,7 @@
 
 @interface DTImagePickerControlBar : UIView
 
+//Interface outlets, 'DTImagePickerController' will attach event listener
 @property (nonatomic, retain) IBOutlet UIButton *libraryButton;
 @property (nonatomic, retain) IBOutlet UIButton *takePictureButton;
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;

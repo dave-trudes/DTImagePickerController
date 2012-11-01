@@ -31,6 +31,7 @@
 @synthesize controlBar = _controlBar;
 @synthesize captureView = _captureView;
 
+
 #pragma mark - Initialization & setup
 - (id)init
 {
@@ -38,10 +39,10 @@
 	if (self) {
 		self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 		self.showFullscreen = YES;
-		self.wantsFullScreenLayout = YES;
 	}
 	return self;
 }
+
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad
@@ -64,7 +65,6 @@
 	frame.origin.y = self.view.frame.size.height - frame.size.height;
 	controlBar.frame = frame;
 	[self.view addSubview:controlBar];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,6 +101,14 @@
 
 
 #pragma mark - Property setter / getter
+- (void)setShowFullscreen:(BOOL)showFullscreen
+{
+	if (!showFullscreen) {
+		self.wantsFullScreenLayout = NO;
+	}
+	_showFullscreen = showFullscreen;
+}
+
 - (DTCaptureView *)captureView
 {
 	if (_captureView == nil) {
@@ -140,9 +148,8 @@
 							forControlEvents:UIControlEventTouchUpInside];
 	[_controlBar.libraryButton addTarget:self action:@selector(openImageLibrary)
 						forControlEvents:UIControlEventTouchUpInside];
-	
-
 }
+
 
 #pragma mark - Feature detection getter
 - (BOOL)hasRearCamera
@@ -159,6 +166,7 @@
 {
 	return [UIImagePickerController isFlashAvailableForCameraDevice:UIImagePickerControllerCameraDeviceRear];
 }
+
 
 #pragma mark - Public
 - (IBAction)takePicture
@@ -208,6 +216,7 @@
 	
 }
 
+
 #pragma mark - UIImagePickerControllerDelegate methods
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -223,6 +232,7 @@
 	[self closeImageLibrary];
 }
 
+
 #pragma mark - DTCaptureViewDelegate methods
 - (void)captureViewDidFinishCaptureImageWithInfo:(NSDictionary *)mediaInfo
 {
@@ -235,4 +245,5 @@
 {
 	DLog(@"Error: %@", error.localizedDescription);
 }
+
 @end
