@@ -60,6 +60,7 @@
 	self.devicePosition = AVCaptureDevicePositionBack;
 }
 
+
 #pragma mark - Settings
 - (void)setFocusMode:(AVCaptureFocusMode)focusMode
 {	
@@ -136,8 +137,8 @@
 	[_session commitConfiguration];
 
 	_currentInput = newInput;
-	
 }
+
 
 #pragma mark - Getter 
 - (AVCaptureDevice *)device
@@ -150,6 +151,7 @@
 	return [DTCaptureViewUtils connectionWithMediaType:AVMediaTypeVideo
 									   fromConnections:_stillImageOutput.connections];
 }
+
 
 #pragma mark - Public methods
 - (void)startCamera
@@ -233,6 +235,7 @@
 		}
 	}];
 }
+
 
 #pragma mark - Capture session methods
 - (void)setupCaptureSessionWithPreset:(NSString *)preset

@@ -54,7 +54,9 @@
 @property (nonatomic, retain) AVCaptureSession *session;
 @property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
+
 @property (nonatomic, assign) id<DTCaptureViewDelegate> delegate;
+
 
 //Starts camera session with 'AVCaptureSessionPresetPhoto'
 - (void)startCamera;
@@ -62,6 +64,7 @@
 - (void)stopCamera;
 
 //Swap the camera position if supported by device (Rear camera / Front camera)
+//You can also use the 'devicePosition' property access to switch the camera's position
 - (void)swapCameraPosition;
 
 //Captures the image and notifies the delegate
