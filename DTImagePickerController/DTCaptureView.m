@@ -27,7 +27,8 @@
 
 @implementation DTCaptureView {
 	
-	BOOL _isCameraRunning, _isCapturing;
+	BOOL _isCameraRunning;
+	BOOL _isCapturing; //Flag indicating if image capturing is in progress
 	AVCaptureDeviceInput *_currentInput;
 }
 
@@ -136,7 +137,7 @@
 	[_session removeInput:_currentInput];
 	[_session addInput:newInput];
 	[_session commitConfiguration];
-	
+
 	_currentInput = newInput;
 	
 }
@@ -186,7 +187,7 @@
 
 - (void)swapCameraPosition
 {
-	self.devicePosition = (_devicePosition == AVCaptureDevicePositionFront) ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
+	self.devicePosition = (_devicePosition == AVCaptureDevicePositionBack) ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
 }
 
 - (void)captureImage
