@@ -33,6 +33,7 @@
 
 //Called if an error appears during image capturing
 - (void)captureViewDidFailCaptureImageWithError:(NSError *)error;
+
 @end
 #pragma mark -
 
