@@ -103,9 +103,7 @@
 #pragma mark - Property setter / getter
 - (void)setShowFullscreen:(BOOL)showFullscreen
 {
-	if (!showFullscreen) {
-		self.wantsFullScreenLayout = NO;
-	}
+	self.wantsFullScreenLayout = showFullscreen;
 	_showFullscreen = showFullscreen;
 }
 
