@@ -244,4 +244,17 @@
 	DLog(@"Error: %@", error.localizedDescription);
 }
 
+#pragma mark - UIViewController methods
+- (NSUInteger)supportedInterfaceOrientations
+{
+	return UIInterfaceOrientationMaskPortrait;
+}
+- (BOOL)shouldAutorotate
+{
+	return YES;
+}
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	DLog(@"");
+}
 @end
